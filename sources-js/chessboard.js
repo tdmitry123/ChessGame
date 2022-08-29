@@ -128,4 +128,25 @@ export class Chessboard {
         }
     }
 
+    renderPosition () {
+        for (let row = 0; row < 8; row++) {
+            for (let column = 0; column <8; column++) {
+                let square = document.querySelector(`.position-${row}-${column}`);
+                if (this['board'][row][column] != null &&
+                    this['board'][row][column].hasOwnProperty('img')
+                    ) {
+                    square.style.backgroundImage = this['board'][row][column]['img'];
+                    square.style.backgroundSize = 'cover';
+                }
+                else {
+                    square.style.backgroundImage = '';
+                    square.style.backgroundSize = '';
+                }
+            }
+        }
+        
+    }
+
+    
+
 }
