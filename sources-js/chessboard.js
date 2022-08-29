@@ -1,4 +1,5 @@
 import {Piece} from './pieces-classes/piece';
+import {Pawn} from './pieces-classes/pawn';
 
 export class Chessboard {
     constructor (targetNode) {
@@ -109,7 +110,7 @@ export class Chessboard {
                         this['board'][piece.positionX][piece.positionY] = new Piece(piece.color, piece.piece, this, piece.positionX, piece.positionY);
                     }
                     if (piece.piece == 'pawn') {
-                        this['board'][piece.positionX][piece.positionY] = new Piece(piece.color, piece.piece, this, piece.positionX, piece.positionY);
+                        this['board'][piece.positionX][piece.positionY] = new Pawn(piece.color, piece.piece, this, piece.positionX, piece.positionY);
                     }
                     if (piece.piece == 'knight') {
                         this['board'][piece.positionX][piece.positionY] = new Piece(piece.color, piece.piece, this, piece.positionX, piece.positionY);
@@ -147,6 +148,6 @@ export class Chessboard {
         
     }
 
-    
+
 
 }
