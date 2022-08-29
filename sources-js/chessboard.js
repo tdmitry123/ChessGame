@@ -1,3 +1,5 @@
+import {Piece} from './pieces-classes/piece';
+
 export class Chessboard {
     constructor (targetNode) {
         this.initialPosition = [
@@ -90,5 +92,40 @@ export class Chessboard {
 
     }
 
+    loadPosition (position) {
+        for (let index = 0, max = position.length; index < max; index++ ) {
+            let piece = position[index];
+            if (piece.piece && 
+                piece.color && 
+                piece.hasOwnProperty('positionX') && 
+                piece.hasOwnProperty('positionY') &&
+                piece.positionX < 8 &&
+                piece.positionX >= 0 &&
+                piece.positionY < 8 &&
+                piece.positionY >= 0 
+                ) 
+                {
+                    if (piece.piece == 'king') {
+                        this['board'][piece.positionX][piece.positionY] = new Piece(piece.color, piece.piece, this, piece.positionX, piece.positionY);
+                    }
+                    if (piece.piece == 'pawn') {
+                        this['board'][piece.positionX][piece.positionY] = new Piece(piece.color, piece.piece, this, piece.positionX, piece.positionY);
+                    }
+                    if (piece.piece == 'knight') {
+                        this['board'][piece.positionX][piece.positionY] = new Piece(piece.color, piece.piece, this, piece.positionX, piece.positionY);
+                    }
+                    if (piece.piece == 'rook') {
+                        this['board'][piece.positionX][piece.positionY] = new Piece(piece.color, piece.piece, this, piece.positionX, piece.positionY);
+                    }
+                    if (piece.piece == 'beeshop') {
+                        this['board'][piece.positionX][piece.positionY] = new Piece(piece.color, piece.piece, this, piece.positionX, piece.positionY);
+                    }
+                    if (piece.piece == 'queen') {
+                        this['board'][piece.positionX][piece.positionY] = new Piece(piece.color, piece.piece, this, piece.positionX, piece.positionY);
+                    }
+                }
+            
+        }
+    }
 
 }
