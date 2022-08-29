@@ -44,7 +44,8 @@ h1 {
  * 2. Show the overflow in Edge and IE.
  */
 hr {
-  box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
   /* 1 */
   height: 0;
   /* 1 */
@@ -81,7 +82,8 @@ abbr[title] {
   /* 1 */
   text-decoration: underline;
   /* 2 */
-  text-decoration: underline dotted;
+  -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted;
   /* 2 */
 }
 
@@ -228,7 +230,8 @@ fieldset {
  *    `fieldset` elements in all browsers.
  */
 legend {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   /* 1 */
   color: inherit;
   /* 2 */
@@ -262,7 +265,8 @@ textarea {
  */
 [type="checkbox"],
 [type="radio"] {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   /* 1 */
   padding: 0;
   /* 2 */
@@ -335,5 +339,71 @@ template {
  */
 [hidden] {
   display: none;
+}
+
+/*-------------chessboard.scss------------------------------------------------------------*/
+body {
+  background-color: transparent;
+}
+
+.chessboard {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 800px minmax(200px, 1fr) minmax(200px, 1fr);
+      grid-template-columns: 800px minmax(200px, 1fr) minmax(200px, 1fr);
+  -ms-grid-rows: 800px;
+      grid-template-rows: 800px;
+      grid-template-areas: 'chessboard__field chessboard__history chessboard__controls';
+}
+
+.chessboard__field {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: chessboard__field;
+  width: 800px;
+  height: 800px;
+  background-color: transparent;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap-reverse;
+      flex-wrap: wrap-reverse;
+}
+
+.chessboard__square {
+  width: 12.5%;
+  height: 12.5%;
+}
+
+.chessboard__square_light {
+  background-color: #aa6;
+}
+
+.chessboard__square_dark {
+  background-color: #660;
+}
+
+.chessboard__square_selected {
+  background-color: #3a3;
+}
+
+.chessboard__possible-moves {
+  background-color: #6c6;
+}
+
+.chessboard__history {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: chessboard__history;
+}
+
+.chessboard__controls {
+  -ms-grid-row: 1;
+  -ms-grid-column: 3;
+  grid-area: chessboard__controls;
 }
 /*# sourceMappingURL=styles.css.map */
