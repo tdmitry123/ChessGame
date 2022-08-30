@@ -90,6 +90,22 @@ export class Chessboard {
     }
 
     handleClick (potentialMoveX, potentialMoveY) {
+        // Если выбрали свою фигуру
+        if (
+            (
+            !(this['board'][potentialMoveX][potentialMoveY] == null) &&
+            this.turn == this['board'][potentialMoveX][potentialMoveY]['color']
+            )
+            ) {
+            this.stage = 'select move';
+            if (this.selectedPosition != null) {
+                this.clearPossibleMoves();
+            }
+            this.selectedPosition = [potentialMoveX, potentialMoveY];
+            this['board'][potentialMoveX][potentialMoveY].defineMoves();
+            this.renderPossibleMoves();
+
+        }
 
     }
 
@@ -148,6 +164,24 @@ export class Chessboard {
         
     }
 
+    clearPossibleMoves () {
+        for (let delPosition = 0; delPosition < this.possibleMoves.length; delPosition++) {
+            let square = document.querySelector(`.position-${this.possibleMoves[delPosition][0]}-${this.possibleMoves[delPosition][1]}`);
+            square.classList.remove('chessboard__possible-moves');
+        }
+        this.possibleMoves = [];
+        
+        let oldSelectedSquare = document.querySelector(`.position-${this.selectedPosition[0]}-${this.selectedPosition[1]}`);
+        oldSelectedSquare.classList.remove('chessboard__square_selected'); 
+    }
 
+    renderPossibleMoves () {
+        let selectedSquare = document.querySelector(`.position-${this.selectedPosition[0]}-${this.selectedPosition[1]}`);
+        selectedSquare.classList.add('chessboard__square_selected');
+        for (let move = 0; move < this.possibleMoves.length; move++) {
+            let square = document.querySelector(`.position-${this.possibleMoves[move][0]}-${this.possibleMoves[move][1]}`);
+            square.classList.add('chessboard__possible-moves');
+        }
+    }
 
 }
