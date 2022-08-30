@@ -1,6 +1,7 @@
 import {Piece} from './pieces-classes/piece';
 import {Pawn} from './pieces-classes/pawn';
 import {Beeshop} from './pieces-classes/beeshop';
+import {Knight} from './pieces-classes/knight';
 
 export class Chessboard {
     constructor (targetNode) {
@@ -150,7 +151,7 @@ export class Chessboard {
                         this['board'][piece.positionX][piece.positionY] = new Pawn(piece.color, piece.piece, this, piece.positionX, piece.positionY);
                     }
                     if (piece.piece == 'knight') {
-                        this['board'][piece.positionX][piece.positionY] = new Piece(piece.color, piece.piece, this, piece.positionX, piece.positionY);
+                        this['board'][piece.positionX][piece.positionY] = new Knight(piece.color, piece.piece, this, piece.positionX, piece.positionY);
                     }
                     if (piece.piece == 'rook') {
                         this['board'][piece.positionX][piece.positionY] = new Piece(piece.color, piece.piece, this, piece.positionX, piece.positionY);
@@ -209,7 +210,6 @@ export class Chessboard {
         this['board'][moveToX][moveToY] = this['board'][this.selectedPosition[0]][this.selectedPosition[1]];
         this['board'][moveToX][moveToY]['positionX'] = moveToX;
         this['board'][moveToX][moveToY]['positionY'] = moveToY;
-        //chessboard[moveToX][moveToY] = chessboard[positionX][positionY];
         this['board'][this.selectedPosition[0]][this.selectedPosition[1]] = null;
         console.log('nothing');
     }
