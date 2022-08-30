@@ -3,6 +3,7 @@ import {Pawn} from './pieces-classes/pawn';
 import {Beeshop} from './pieces-classes/beeshop';
 import {Knight} from './pieces-classes/knight';
 import {Rook} from './pieces-classes/rook';
+import {King} from './pieces-classes/king';
 
 export class Chessboard {
     constructor (targetNode) {
@@ -146,7 +147,7 @@ export class Chessboard {
                 ) 
                 {
                     if (piece.piece == 'king') {
-                        this['board'][piece.positionX][piece.positionY] = new Piece(piece.color, piece.piece, this, piece.positionX, piece.positionY);
+                        this['board'][piece.positionX][piece.positionY] = new King(piece.color, piece.piece, this, piece.positionX, piece.positionY);
                     }
                     if (piece.piece == 'pawn') {
                         this['board'][piece.positionX][piece.positionY] = new Pawn(piece.color, piece.piece, this, piece.positionX, piece.positionY);
