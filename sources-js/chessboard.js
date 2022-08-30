@@ -107,6 +107,26 @@ export class Chessboard {
 
         }
 
+        //Если возможный ход
+        let isPossibleMove = false;
+        this.possibleMoves.forEach(function (index) {
+            if (index[0] == potentialMoveX && 
+                index[1] == potentialMoveY) {
+                    isPossibleMove = true;
+                }
+        })
+        
+        if (isPossibleMove) {
+            this.clearPossibleMoves();
+            this.makeMove(potentialMoveX, potentialMoveY);
+            this.renderPosition();
+            if (this.turn == 'white') {
+                this.turn = 'black';
+            } else {
+                this.turn = 'white';
+            }
+        }
+
     }
 
     loadPosition (position) {
@@ -184,4 +204,13 @@ export class Chessboard {
         }
     }
 
+    makeMove (moveToX, moveToY) {
+        this['board'][moveToX][moveToY] = this['board'][this.selectedPosition[0]][this.selectedPosition[1]];
+        this['board'][moveToX][moveToY]['positionX'] = moveToX;
+        this['board'][moveToX][moveToY]['positionY'] = moveToY;
+        //chessboard[moveToX][moveToY] = chessboard[positionX][positionY];
+        this['board'][this.selectedPosition[0]][this.selectedPosition[1]] = null;
+        console.log('nothing');
+    }
+    
 }
